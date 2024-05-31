@@ -1,5 +1,8 @@
 package com.capgemini.wsb.fitnesstracker.user.api;
 
+import com.capgemini.wsb.fitnesstracker.user.internal.UserDto;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,4 +33,9 @@ public interface UserProvider {
      */
     List<User> findAllUsers();
 
+    List<User> getUserIdByEmail(final String email);
+
+    List<User> findAllUsersOlderThen(final LocalDate time);
+
+    public void updateUser(Long id, UserSupport2Dto userSupport2Dto);
 }
