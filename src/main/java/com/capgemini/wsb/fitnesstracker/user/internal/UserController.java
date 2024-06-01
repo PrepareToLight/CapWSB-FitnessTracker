@@ -14,6 +14,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 @RestController
 @RequestMapping("/v1/users")
 @RequiredArgsConstructor
@@ -42,10 +44,21 @@ class UserController {
         return userService.findAllUsers().stream().map(userMapper::toUserSupportDto).toList();
     }
 
+
+    @GetMapping("/email")
+    public List<UserSupport1Dto> searchUserByEmail(@RequestParam String email)
+    {
+        return userService.searchUserByEmail(email)
+                .stream()
+                .map(userMapper::toUserSupport1Dto)
+                .collect(Collectors.toList());
+    }
+    /*
     @GetMapping("/email")
     public List<UserSupport1Dto> getUserIdByEmail(@RequestParam String email) {
         return userService.getUserIdByEmail(email).stream().map(userMapper::toUserSupport1Dto).toList();
     }
+     */
 
     @GetMapping("/older/{time}")
     public List<UserDto> findAllUsersOlderThen(@PathVariable LocalDate time) {

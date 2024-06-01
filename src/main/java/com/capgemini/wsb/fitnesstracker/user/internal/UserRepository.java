@@ -2,7 +2,6 @@ package com.capgemini.wsb.fitnesstracker.user.internal;
 
 import com.capgemini.wsb.fitnesstracker.user.api.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,6 +23,18 @@ interface UserRepository extends JpaRepository<User, Long> {
                         .findFirst();
     }
 
+
+
+
+
+    default List<User> searchUserByEmail(String email){
+        return findAll().stream()
+                //.map(user -> new IDEmailUserDto(user.getId(), user.getEmail()))
+                //.filter(user -> user.getEmail().toLowercase().contains(email.toLowerCase()))
+                .filter(user -> user.getEmail().matches("(?i).*" + email + ".*"))
+                .collect(Collectors.toList());
+    }
+    /*
     default List<User> findByPartEmail(String email){
         System.out.println("Looking for emials");
         return findAll()
@@ -31,6 +42,7 @@ interface UserRepository extends JpaRepository<User, Long> {
                 .filter(user -> user.getEmail().matches("(?i)." + email + "."))
                 .collect(Collectors.toList());
     }
+     */
 
     default List<User> findAllUsersOlderThen(LocalDate time){
         return findAll().stream()

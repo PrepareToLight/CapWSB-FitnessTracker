@@ -33,8 +33,10 @@ public interface UserProvider {
      */
     List<User> findAllUsers();
 
+    public List<User> searchUserByEmail(String email);
+    /*
     List<User> getUserIdByEmail(final String email);
-
+     */
     List<User> findAllUsersOlderThen(final LocalDate time);
 
     public void updateUser(Long id, UserSupport2Dto userSupport2Dto);

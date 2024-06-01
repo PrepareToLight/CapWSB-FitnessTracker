@@ -31,8 +31,7 @@ public class UserMapper {
     }
 
     UserSupport1Dto toUserSupport1Dto(User user) {
-        return new UserSupport1Dto(user.getId(),
-                                   user.getEmail());
+        return new UserSupport1Dto(user.getId(), user.getEmail());
     }
 
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class TrainingMapper {
-    private final UserServiceImpl userService;
+    public final UserServiceImpl userService;
     TrainingDto toTrainingDto(Training training){
         return new TrainingDto(
                 training.getId(),
