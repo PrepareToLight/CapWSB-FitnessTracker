@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: loadInitialData
   datasource:
     url: "jdbc:h2:mem:testdb"
     driver-class-name: "org.h2.Driver"
@@ -7,5 +9,14 @@ spring:
   h2:
     console:
       enabled: true
-  profiles:
-    active: loadInitialData
+  mail:
+    host: "sandbox.smtp.mailtrap.io"
+    port: 2525
+    username: "1863953262f36c"
+    password: "797fa4caef14dd"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
